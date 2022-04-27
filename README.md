@@ -19,7 +19,7 @@ Instructions to run code:
 
 install anaconda https://docs.continuum.io/anaconda/install/
 
-clone github code https://github.com/meronvermaas/FEMfuns
+clone github code https://github.com/Donders-Institute/FEMfuns
 
 move to cloned FEMfuns directory: cd FEMfuns
 Set-up the conda environment
