@@ -28,10 +28,10 @@ Besides Fieldtrip, other external software is used in the workflow, e.g., FEniCS
      style="float: left; width: 440px;" />
 
 ## Running a simulation with FieldTrip and FEMfuns combined
-The following section illustrates an example where the FEMfuns pipeline is embedded in FieldTrip. The geometry, electrodes and source-model are created in FieldTrip. These are used in FEMfuns to calculate lead fields by means of FEM with optional properties such as an electrode surface conductance and stimulating electrodes. For the simplest case, a 2-sphere geometry is used representing brain and skull compartment and several realistic electrodes on the upper half of the sphere representing the brain.
+The following section illustrates an example where the FEMfuns pipeline is embedded in FieldTrip. The geometry, electrodes and source-model are created in FieldTrip. These are used in FEMfuns to calculate leadfields by means of FEM with optional properties such as an electrode surface conductance and stimulating electrodes. Here, we illustrate examples both in a simple sphere model and an MRI-based realistic head model. 
 
 ### Setting-up
-The instructions to set up FEMfuns can be found on the [Github page](https://github.com/meronvermaas/FEMfuns).
+The instructions to set up FEMfuns can be found on the [Github page](https://github.com/Donders-Institute/FEMfuns).
 Setting up is achieved in three steps:
 
 Step 1: Download Anaconda: https://docs.continuum.io/anaconda/install/ 
@@ -41,10 +41,10 @@ Step 1: Download Anaconda: https://docs.continuum.io/anaconda/install/
 
 Step 2: Clone FEMfuns
 
-    git clone https://github.com/meronvermaas/FEMfuns.git
+    git clone https://github.com/Donders-Institute/FEMfuns.git
 OR
 
-    wget https://github.com/meronvermaas/FEMfuns/archive/refs/heads/master.zip
+    wget https://github.com/Donders-Institute/FEMfuns/archive/refs/heads/master.zip
 
 Step 3: Set-up the environment
 
@@ -55,7 +55,11 @@ Move to the  cloned FEMfuns directory and create the conda environment.
     conda develop pipeline_code/ -n femfuns
     
 These steps where the environment is set-up, you only need to do once.
-However, it is necessary to activate the environment by running "conda activate femfuns", every session where FEMfuns is used.
+However, it is necessary to activate the environment by running
+
+     conda activate femfuns
+
+every session where FEMfuns is used.
 
 If you will not work from the FEMfuns directory and want to have all scripts available, you may add the path to .bashrc, e.g.:
 
