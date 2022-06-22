@@ -21,7 +21,10 @@ install anaconda https://docs.continuum.io/anaconda/install/
 
 clone github code https://github.com/Donders-Institute/FEMfuns
 
-move to cloned FEMfuns directory: cd FEMfuns
+move to cloned FEMfuns directory: 
+```
+cd FEMfuns
+```
 Set-up the conda environment
 ```
 conda env create -f environment.yml
