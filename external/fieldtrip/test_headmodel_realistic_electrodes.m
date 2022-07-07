@@ -22,7 +22,7 @@ ft_defaults;
 ft_hastoolbox('iso2mesh', 1);
 
 % Read in the MRI data
-mri = ft_read_mri('Subject01.mri'); % the anatomical mri can be found at FieldTrip: ftp://ftp.fieldtriptoolbox.org/pub/fieldtrip/tutorial/Subject01.zip
+mri = ft_read_mri('Subject01.mri'); % the anatomical mri can be found at FieldTrip: https://download.fieldtriptoolbox.org/tutorial/Subject01.zip
 
 % reslice the volume to ensure homogenous voxels
 cfg     = [];
