@@ -27,3 +27,4 @@ figure, plot(lf_small.leadfield(3:end)*1e9)
 hold on
 plot(lf_big.leadfield(3:end)*1e9)
 
+%% compare potentials in paraview with Figure1.png
