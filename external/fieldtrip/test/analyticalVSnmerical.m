@@ -147,39 +147,17 @@ disp(lf_rec)
 % leadfield: {1×27 cell}
 %     label: {'elec1'  'elec2'  'elec3'  'elec4'  'elec5'}
 
-%% compute leadfield with simbio
-% compute the stiffness matrix
-cfg = [];
-cfg.method = 'simbio';
-cfg.conductivity = conductivities;
-mesh_simbio = mesh;
-mesh_simbio.tet = mesh.tet(:,[1,2,4,3]);
-vol = ft_prepare_headmodel(cfg,mesh_simbio);
-
-% compute the transfer matrix
-vol_transfer = ft_prepare_vol_sens(vol,elec_scalp);
-
-% compute the leadfield
-cfg = [];
-cfg.grid = sourcemodel;
-cfg.headmodel= 'simbio';
-cfg.vol = vol_transfer;
-cfg.elec = elec_scalp;
-cfg.reducerank = 3;
-lf_simbio = ft_prepare_leadfield(cfg);
 
 %% are they all CAR?
 
 lf_an_matrix = cell2mat(lf_analytical.leadfield);
 lf_femfuns_matrix = cell2mat(lf_rec.leadfield);
-lf_simbio_matrix = cell2mat(lf_simbio.leadfield);
 
 
 car_an = mean(lf_an_matrix,1);
 car_femfuns = mean(lf_femfuns_matrix,1);
-car_simbio = mean(lf_simbio_matrix,1);
 
-figure, plot(car_an), hold on, plot(car_simbio), hold on, plot(car_femfuns)
+figure, plot(car_an), hold on, plot(car_femfuns)
 
 %% NO! rereferencing
 
@@ -195,21 +173,5 @@ for i=1:5
     mag(i) = (num_norm/ana_norm);
 end
 
-figure, plot(rdm), title('rdm ana vs femfuns')
-figure, plot(mag), title('mag ana vs femfuns')
-
-%% rdm and mag ana vs simbio
-
-for i=1:5
-    num_norm = norm(lf_simbio_matrix(i,:));
-    ana_norm = norm(lf_an_matrix(i,:));
-    rdm(i) = 50*norm(lf_simbio_matrix(i,:)./num_norm - lf_an_matrix(i,:)./ana_norm);
-    mag(i) = (num_norm/ana_norm);
-end
-
-figure, plot(rdm), title('rdm ana vs simbio')
-figure, plot(mag), title('mag ana vs simbio')
-
-
-
-
+figure, plot(rdm), title('rdm ana vs femfuns') %values in percentage below 10%
+figure, plot(mag), title('mag ana vs femfuns') %values should be around 1
