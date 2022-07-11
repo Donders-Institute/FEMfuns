@@ -90,17 +90,17 @@ fprintf(fileID,'monopole_list = [\n');
 monopolelist = '';
 dippos = sourcemodel.pos(sourcemodel.inside,:);
 for ii = 1:size(dippos,1)
-    monopole1 = sprintf('%f,' , dippos(ii,:)+[1e-2 0 0]);
-    monopole2 = sprintf('%f,' , dippos(ii,:)-[1e-2 0 0]);
-    monopolelist = sprintf('%s{''monopoles'': [[%s 1],[%s -1]], ''name'': ''%s''},\n',monopolelist,monopole1,monopole2, ['xpole' num2str(ii)]);
+    monopole1 = sprintf('%f,' , dippos(ii,:)+[5e-6 0 0]);
+    monopole2 = sprintf('%f,' , dippos(ii,:)-[5e-6 0 0]);
+    monopolelist = sprintf('%s{''monopoles'': [[%s 100000],[%s -100000]], ''name'': ''%s''},\n',monopolelist,monopole1,monopole2, ['xpole' num2str(ii)]);
     
-    monopole1 = sprintf('%f,' , dippos(ii,:)+[0 1e-2 0]);
-    monopole2 = sprintf('%f,' , dippos(ii,:)-[0 1e-2 0]);
-    monopolelist = sprintf('%s{''monopoles'': [[%s 1],[%s -1]], ''name'': ''%s''},\n',monopolelist,monopole1,monopole2, ['ypole' num2str(ii)]);
+    monopole1 = sprintf('%f,' , dippos(ii,:)+[0 5e-6 0]);
+    monopole2 = sprintf('%f,' , dippos(ii,:)-[0 5e-6 0]);
+    monopolelist = sprintf('%s{''monopoles'': [[%s 100000],[%s -100000]], ''name'': ''%s''},\n',monopolelist,monopole1,monopole2, ['ypole' num2str(ii)]);
     
-    monopole1 = sprintf('%f,' , dippos(ii,:)+[0 0 1e-2]);
-    monopole2 = sprintf('%f,' , dippos(ii,:)-[0 0 1e-2]);
-    monopolelist = sprintf('%s{''monopoles'': [[%s 1],[%s -1]], ''name'': ''%s''},\n',monopolelist,monopole1,monopole2, ['zpole' num2str(ii)]);
+    monopole1 = sprintf('%f,' , dippos(ii,:)+[0 0 5e-6]);
+    monopole2 = sprintf('%f,' , dippos(ii,:)-[0 0 5e-6]);
+    monopolelist = sprintf('%s{''monopoles'': [[%s 100000],[%s -100000]], ''name'': ''%s''},\n',monopolelist,monopole1,monopole2, ['zpole' num2str(ii)]);
 end
 monopolelist = monopolelist(1:end-2);
 if isempty(monopolelist)
